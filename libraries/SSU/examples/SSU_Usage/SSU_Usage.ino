@@ -31,6 +31,7 @@
  After this UPDATE.BIN and UPDATE.OK are deleted from the flash.
 */
 
+
 #include <SSU.h>
 
 void setup()

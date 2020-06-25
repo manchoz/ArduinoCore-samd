@@ -23,6 +23,7 @@
 #include <FlashStorage.h>
 #include <MKRGSM.h>
 
+
 /**************************************************************************************
    DEFINE
  **************************************************************************************/
@@ -39,12 +40,15 @@
 static constexpr char UPDATE_FILE_NAME[] = "UPDATE.BIN";
 static constexpr char CHECK_FILE_NAME[] = "UPDATE.OK";
 
+
 /**************************************************************************************
    GLOBAL VARIABLES
  **************************************************************************************/
 
 FlashClass mcu_flash;
+
 GSMFileUtils  fileUtils;
+
 /**************************************************************************************
    FUNCTION DECLARATION
  **************************************************************************************/
@@ -74,6 +78,7 @@ int main()
   if (fileUtils.listFile(CHECK_FILE_NAME) == 1) {
     uint32_t size = fileUtils.listFile(UPDATE_FILE_NAME);
     size_t cycles = (size / blockSize) + 1;
+
     if (size > SSU_SIZE) {
       size -= SSU_SIZE;
 
