@@ -34,16 +34,19 @@ void setup() {
   Serial.println("OK");
 
 
-  Serial.print("Writing \"UPDATE.BIN\" ... ");
+  Serial.print("Writing \"UPDATE.BIN\"... ");
   uint32_t bytes_to_write = sizeof(BINARY);
   auto bytes_written = fileUtils.downloadFile("UPDATE.BIN", BINARY, bytes_to_write);
   
   if(bytes_written != bytes_to_write) {
-    Serial.println("downloadFile failed.");return;
+    Serial.println("downloadFile failed.");
+    return;
   } else {
     Serial.print("OK (");
     Serial.print(bytes_written);
     Serial.println(" bytes written)");
+    Serial.print("Writing \"UPDATE.OK\" for checkpoint... ");
+    fileUtils.downloadFile("UPDATE.OK", { 0 }, 1);
   }
 }
 
